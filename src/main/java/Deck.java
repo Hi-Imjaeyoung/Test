@@ -1,8 +1,9 @@
 import java.util.*;
 
 public class Deck {
-    static List<Card> cards = new ArrayList<>();
+    static List<Card> cards;
     public Deck(){
+        cards = new ArrayList<>();
         for(int i=0;i<4;i++){
             addManCards();
             addSakCards();
