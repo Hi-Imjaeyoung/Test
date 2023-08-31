@@ -9,4 +9,7 @@ public class Card {
         this.type = type;
         this.number =-1;
         }
+    public String toString(){
+        return String.valueOf(number)+type+" ";
+    }
 }
