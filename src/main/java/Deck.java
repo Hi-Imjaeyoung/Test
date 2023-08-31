@@ -25,6 +25,7 @@ public class Deck {
         Collections.shuffle(cards);
 
     }
+    //make cards
     private  void addManCards(){
         for(int i=1;i<10;i++){
             cards.add(new Card("MAN",i));
@@ -51,6 +52,15 @@ public class Deck {
         cards.add(new Card("GREEN"));
         cards.add(new Card("RED"));
     }
+    //essential function
+    public Card draw(){
+        Card nowCard = cards.get(0); // if cards structure type is que it is better easy?
+        cards.remove(0);
+        return nowCard;
+    }
+    //TODO should check remain cards in deck
+
+    //additional function
     public int printSize(){
         return cards.size();
     }
