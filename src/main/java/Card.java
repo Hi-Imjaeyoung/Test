@@ -10,6 +10,8 @@ public class Card {
         this.number =-1;
         }
     public String toString(){
+        if(number==-1)
+            return type+" ";
         return String.valueOf(number)+type+" ";
     }
 }
