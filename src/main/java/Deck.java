@@ -1,18 +1,6 @@
 import java.util.*;
 
 public class Deck {
-    class Card{
-        String type;
-        int number;
-        Card(String type, int number){
-            this.type = type;
-            this.number = number;
-        }
-        Card(String type){
-            this.type = type;
-            this.number =-1;
-        }
-    }
     static List<Card> cards = new ArrayList<>();
     public Deck(){
         for(int i=0;i<4;i++){
