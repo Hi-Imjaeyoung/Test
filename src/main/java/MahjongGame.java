@@ -19,4 +19,8 @@ public class MahjongGame {
         }
         return sb.toString();
     }
+    public String drawCard(){
+        Card draw_card = deck.draw();
+        return showMyHands()+" 쯔모 "+draw_card.toString();
+    }
 }
