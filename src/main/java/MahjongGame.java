@@ -10,6 +10,7 @@ public class MahjongGame {
         while (hand.size()!=13){
             hand.add(deck.draw());
         }
+        Collections.sort(east_hand);
     }
     public String showMyHands(){
         StringBuilder sb = new StringBuilder();
