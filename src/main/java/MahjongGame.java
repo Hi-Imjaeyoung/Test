@@ -3,8 +3,16 @@ public class MahjongGame {
     Deck deck;
     List<Card> east_hand = new ArrayList<>();
     MahjongGame (){
+        //Start Game
         deck = new Deck();
         settingHand(east_hand);
+        //going Game
+        //while(game is end){
+        //    drawCard();
+        //    abandonCard();
+        // }
+
+        //end Game
     }
     private void settingHand(List<Card> hand){
         while (hand.size()!=13){
@@ -21,6 +29,11 @@ public class MahjongGame {
     }
     public String drawCard(){
         Card draw_card = deck.draw();
-        return showMyHands()+" 쯔모 "+draw_card.toString();
+        east_hand.add(draw_card);
+        return "쯔모 "+draw_card.toString();
+    }
+    public void abandonCard(Card card){
+        east_hand.remove(card);
+        Collections.sort(east_hand);
     }
 }
