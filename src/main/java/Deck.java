@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Deck {
-    static List<Card> cards;
+    List<Card> cards;
     public Deck(){
         cards = new ArrayList<>();
         for(int i=0;i<4;i++){
