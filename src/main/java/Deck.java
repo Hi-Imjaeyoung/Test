@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Deck {
     List<Card> cards;
+    int[][] cardInformation = new int[4][10];
     public Deck(){
         cards = new ArrayList<>();
         for(int i=0;i<4;i++){
@@ -10,9 +11,9 @@ public class Deck {
             addTongCards();
             addDragon();
             addWind();
+            Arrays.fill(cardInformation[i],4);
         }
         Collections.shuffle(cards);
-
     }
     //make cards
     private  void addManCards(){
@@ -45,9 +46,16 @@ public class Deck {
     public Card draw(){
         Card nowCard = cards.get(0); // if cards structure type is que it is better easy?
         cards.remove(0);
+        updateCardInformation(nowCard);
         return nowCard;
     }
     //TODO should check remain cards in deck
+    private void updateCardInformation(Card card){
+        int idCode = card.getIdCode();
+        int type = idCode/10;
+        int number = idCode-(type*10);
+        cardInformation[type][number]--;
+    }
 
     //additional function
     public int printSize(){
