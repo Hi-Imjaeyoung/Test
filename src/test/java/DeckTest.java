@@ -17,13 +17,21 @@ class DeckTest {
         //when
         Card card = deck.draw();
         //then
-        if(card.number==-1){
+        if(card.number==0){
             assertThat(card.type).containsAnyOf("EAST","SOUTH","NORTH","WEST","GREEN","RED","WHITE");
         }else{
             assertThat(card.type).containsAnyOf("MAN","Sak","Tong");
             assertThat(card.number).isGreaterThan(0)
                     .isLessThan(10);
         }
+    }
+    @Test
+    void Update_Card_Information(){
+        Deck deck = new Deck();
+        Card card = deck.draw();
+        int type = card.idCode/10;
+        int number = card.idCode - (10*type);
+        assertThat(deck.cardInformation[type][number]).isEqualTo(3);
     }
 
 }
