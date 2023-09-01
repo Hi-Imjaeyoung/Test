@@ -13,9 +13,13 @@ public class Card implements Comparable<Card> {
         calculateIdCode();
         }
     public String toString(){
-        if(number==0)
+        if(number==0){
             return type+" ";
+        }
         return String.valueOf(number)+type+" ";
+    }
+    public int getIdCode(){
+        return idCode;
     }
     private void calculateIdCode(){
         if(type.equals("MAN")){
