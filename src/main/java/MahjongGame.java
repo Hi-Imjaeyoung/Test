@@ -36,4 +36,39 @@ public class MahjongGame {
         east_hand.remove(card);
         Collections.sort(east_hand);
     }
+    public int m1(){
+        int count = 8;
+        int block = 0;
+        boolean[] isBlock = new boolean[14];
+        Arrays.fill(isBlock,false);
+        count-m2(count,block,isBlock);
+        if(m3){
+            while (block<=5)
+            count-m4();
+        }else{
+            while (block<5)
+            count-m4();
+        }
+        return count;
+    }
+    public void m2(int count ,int block,boolean[] isBlock){
+        int sizeOfHand = east_hand.size();
+        for(int i=0; i<sizeOfHand-2; i++){
+            if(east_hand.get(i).idCode==east_hand.get(i+1).idCode){
+                if(east_hand.get(i+1).idCode== east_hand.get(i+2).idCode){
+                    block++;
+                    count -=2;
+                    isBlock[i] = isBlock[i+1] = isBlock[i+2] = true;
+                    continue;
+                }
+            }
+            if(east_hand.get(i).idCode+1 ==east_hand.get(i+1).idCode){
+                if(east_hand.get(i+1).idCode+1 == east_hand.get(i+2).idCode){
+                    block++;
+                    count-=2;
+                    isBlock[i] = isBlock[i+1] = isBlock[i+2] = true;
+                }
+            }
+        }
+    }
 }
