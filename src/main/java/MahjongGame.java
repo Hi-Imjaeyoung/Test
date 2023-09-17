@@ -2,6 +2,9 @@ import java.util.*;
 public class MahjongGame {
     Deck deck;
     List<Card> east_hand = new ArrayList<>();
+    int count = 8;
+    int block = 0;
+    boolean[] isBlock = new boolean[14];
     MahjongGame (){
         //Start Game
         deck = new Deck();
@@ -43,11 +46,11 @@ public class MahjongGame {
         Collections.sort(east_hand);
     }
     public int m1(){
-        int count = 8;
-        int block = 0;
-        boolean[] isBlock = new boolean[14];
+        count = 8;
+        block = 0;
+        isBlock = new boolean[14];
         Arrays.fill(isBlock,false);
-        m2(count,block,isBlock);
+        m2();
         //if(m3){
             //while (block<=5)
             //count-m4();
@@ -57,7 +60,7 @@ public class MahjongGame {
         //}
         return count;
     }
-    public void m2(int count ,int block,boolean[] isBlock){
+    public void m2(){
         int sizeOfHand = east_hand.size();
         for(int i=0; i<sizeOfHand-2; i++){
             if(isBlock[i]){
