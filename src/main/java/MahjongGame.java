@@ -83,4 +83,15 @@ public class MahjongGame {
             }
         }
     }
+    public boolean m3(){
+        for(int i=0;i<east_hand.size()-1;i++){
+            if(isBlock[i]){
+                continue;
+            }
+            if(east_hand.get(i).idCode == east_hand.get(i+1).idCode){
+                return true;
+            }
+        }
+        return false;
+    }
 }
