@@ -23,12 +23,12 @@ public class Deck {
     }
     private  void addTongCards(){
         for(int i=1;i<10;i++){
-            cards.add(new Card("Tong",i));
+            cards.add(new Card("TONG",i));
         }
     }
     private  void addSakCards(){
         for(int i=1;i<10;i++){
-            cards.add(new Card("Sak",i));
+            cards.add(new Card("SAK",i));
         }
     }
     private  void addWind(){

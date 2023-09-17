@@ -20,7 +20,7 @@ class DeckTest {
         if(card.number==0){
             assertThat(card.type).containsAnyOf("EAST","SOUTH","NORTH","WEST","GREEN","RED","WHITE");
         }else{
-            assertThat(card.type).containsAnyOf("MAN","Sak","Tong");
+            assertThat(card.type).containsAnyOf("MAN","SAK","TONG");
             assertThat(card.number).isGreaterThan(0)
                     .isLessThan(10);
         }
