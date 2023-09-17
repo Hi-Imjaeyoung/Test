@@ -26,11 +26,11 @@ public class Card implements Comparable<Card> {
             idCode = number;
             return;
         }
-        if(type.equals("Sak")){
+        if(type.equals("SAK")){
             idCode = number+20;
             return;
         }
-        if(type.equals("Tong")){
+        if(type.equals("TONG")){
             idCode = number+10;
             return;
         }
