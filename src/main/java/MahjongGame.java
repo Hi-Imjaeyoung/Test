@@ -51,13 +51,11 @@ public class MahjongGame {
         isBlock = new boolean[14];
         Arrays.fill(isBlock,false);
         m2();
-        //if(m3){
-            //while (block<=5)
-            //count-m4();
-        //}else{
-            //while (block<5)
-           // count-m4();
-        //}
+        if(m3()){
+            m4(5);
+        }else{
+            m4(4);
+        }
         return count;
     }
     public void m2(){
@@ -74,6 +72,9 @@ public class MahjongGame {
                     continue;
                 }
             }
+            if(east_hand.get(i).idCode>30){
+                continue;
+            }
             if(east_hand.get(i).idCode+1 ==east_hand.get(i+1).idCode){
                 if(east_hand.get(i+1).idCode+1 == east_hand.get(i+2).idCode){
                     block++;
@@ -83,9 +84,9 @@ public class MahjongGame {
             }
         }
     }
-    public boolean m3(){
+    public boolean m3() {
         for(int i=0;i<east_hand.size()-1;i++){
-            if(isBlock[i]){
+            if(isBlock[i]||isBlock[i+1]){
                 continue;
             }
             if(east_hand.get(i).idCode == east_hand.get(i+1).idCode){
@@ -93,5 +94,31 @@ public class MahjongGame {
             }
         }
         return false;
+    }
+    public void m4(int maximumBlock){
+        for(int i=0;i<east_hand.size()-1;i++){
+            if(block>=maximumBlock){
+                break;
+            }
+            if(isBlock[i] || isBlock[i+1]){
+                continue;
+            }
+            if(east_hand.get(i).idCode==east_hand.get(i+1).idCode){
+                block++;
+                count--;
+                isBlock[i]=isBlock[i+1]=true;
+            }
+            if(east_hand.get(i).idCode>30){
+                break;
+            }
+            if(east_hand.get(i).idCode+1==east_hand.get(i+1).idCode||
+            east_hand.get(i).idCode+2==east_hand.get(i+1).idCode
+            ){
+                block++;
+                count--;
+                isBlock[i]=isBlock[i+1]=true;
+            }
+
+        }
     }
 }
