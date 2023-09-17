@@ -45,7 +45,7 @@ class MahjongGameTest {
         MahjongGame game = new MahjongGame(cards);
         game.m2();
         assertThat(game.block).isEqualTo(3);
-        assertThat(game.count).isEqualTo(2;
+        assertThat(game.count).isEqualTo(2);
         assertThat(game.isBlock[0]).isEqualTo(true);
         assertThat(game.isBlock[7]).isEqualTo(false);
     }
