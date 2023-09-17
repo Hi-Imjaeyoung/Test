@@ -14,6 +14,12 @@ public class MahjongGame {
 
         //end Game
     }
+    //User can select cards
+    MahjongGame(List<Card> cardlist){
+        deck = new Deck();
+        east_hand = cardlist;
+        Collections.sort(east_hand);
+    }
     private void settingHand(List<Card> hand){
         while (hand.size()!=13){
             hand.add(deck.draw());
@@ -41,19 +47,22 @@ public class MahjongGame {
         int block = 0;
         boolean[] isBlock = new boolean[14];
         Arrays.fill(isBlock,false);
-        count-m2(count,block,isBlock);
-        if(m3){
-            while (block<=5)
-            count-m4();
-        }else{
-            while (block<5)
-            count-m4();
-        }
+        m2(count,block,isBlock);
+        //if(m3){
+            //while (block<=5)
+            //count-m4();
+        //}else{
+            //while (block<5)
+           // count-m4();
+        //}
         return count;
     }
     public void m2(int count ,int block,boolean[] isBlock){
         int sizeOfHand = east_hand.size();
         for(int i=0; i<sizeOfHand-2; i++){
+            if(isBlock[i]){
+                continue;
+            }
             if(east_hand.get(i).idCode==east_hand.get(i+1).idCode){
                 if(east_hand.get(i+1).idCode== east_hand.get(i+2).idCode){
                     block++;
