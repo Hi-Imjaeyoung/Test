@@ -45,20 +45,20 @@ public class MahjongGame {
         east_hand.remove(card);
         Collections.sort(east_hand);
     }
-    public int m1(){
+    public int calculateShanten(){
         count = 8;
         block = 0;
         isBlock = new boolean[14];
         Arrays.fill(isBlock,false);
-        m2();
-        if(m3()){
-            m4(5);
+        calculateCompleteBody();
+        if(checkPairInHand()){
+            calculateIncompleteBody(5);
         }else{
-            m4(4);
+            calculateIncompleteBody(4);
         }
         return count;
     }
-    public void m2(){
+    public void calculateCompleteBody(){
         int sizeOfHand = east_hand.size();
         for(int i=0; i<sizeOfHand-2; i++){
             if(isBlock[i]){
@@ -84,7 +84,7 @@ public class MahjongGame {
             }
         }
     }
-    public boolean m3() {
+    public boolean checkPairInHand() {
         for(int i=0;i<east_hand.size()-1;i++){
             if(isBlock[i]||isBlock[i+1]){
                 continue;
@@ -95,7 +95,7 @@ public class MahjongGame {
         }
         return false;
     }
-    public void m4(int maximumBlock){
+    public void calculateIncompleteBody(int maximumBlock){
         for(int i=0;i<east_hand.size()-1;i++){
             if(block>=maximumBlock){
                 break;

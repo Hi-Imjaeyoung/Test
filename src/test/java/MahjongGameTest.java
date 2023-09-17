@@ -44,7 +44,7 @@ class MahjongGameTest {
         cards.add(new Card("SOUTH"));
         cards.add(new Card("EAST"));
         MahjongGame game = new MahjongGame(cards);
-        game.m2();
+        game.calculateCompleteBody();
         assertThat(game.block).isEqualTo(3);
         assertThat(game.count).isEqualTo(2);
         assertThat(game.isBlock[0]).isEqualTo(true);
@@ -67,7 +67,7 @@ class MahjongGameTest {
         cards.add(new Card("SOUTH"));
         cards.add(new Card("EAST"));
         MahjongGame game = new MahjongGame(cards);
-        assertThat(game.m3()).isEqualTo(true);
+        assertThat(game.checkPairInHand()).isEqualTo(true);
     }
     @Test
     void Check_Pair_Case2_Exclude(){
@@ -86,8 +86,8 @@ class MahjongGameTest {
         cards.add(new Card("SOUTH"));
         cards.add(new Card("RED"));
         MahjongGame game = new MahjongGame(cards);
-        game.m2();
-        assertThat(game.m3()).isEqualTo(false);
+        game.calculateCompleteBody();
+        assertThat(game.checkPairInHand()).isEqualTo(false);
     }
     @Test
     void Check_IncompleteBody_Case1_MaxBlocks_Is_5(){
@@ -107,9 +107,9 @@ class MahjongGameTest {
         cards.add(new Card("WEST"));
         cards.add(new Card("SOUTH"));
         MahjongGame game = new MahjongGame(cards);
-        game.m2();
+        game.calculateCompleteBody();
         assertThat(game.count).isEqualTo(6);
-        game.m4(5);
+        game.calculateIncompleteBody(5);
         assertThat(game.count).isEqualTo(2);
     }
     @Test
@@ -129,9 +129,9 @@ class MahjongGameTest {
         cards.add(new Card("TONG",1));
         cards.add(new Card("TONG",2));
         MahjongGame game = new MahjongGame(cards);
-        game.m2();
+        game.calculateCompleteBody();
         assertThat(game.count).isEqualTo(6);
-        game.m4(4);
+        game.calculateIncompleteBody(4);
         assertThat(game.count).isEqualTo(3);
     }
     @Test
@@ -151,7 +151,7 @@ class MahjongGameTest {
         cards.add(new Card("TONG",1));
         cards.add(new Card("TONG",2));
         MahjongGame game = new MahjongGame(cards);
-        assertThat(game.m1()).isEqualTo(3);
+        assertThat(game.calculateShanten()).isEqualTo(3);
         cards = new ArrayList<>();
         cards.add(new Card("MAN",1));
         cards.add(new Card("MAN",3));
@@ -168,8 +168,8 @@ class MahjongGameTest {
         cards.add(new Card("WEST"));
         cards.add(new Card("GREEN"));
         MahjongGame game2 = new MahjongGame(cards);
-        game2.m2();
+        game2.calculateCompleteBody();
         assertThat(game2.count).isEqualTo(8);
-        assertThat(game2.m1()).isEqualTo(4);
+        assertThat(game2.calculateShanten()).isEqualTo(4);
     }
 }
