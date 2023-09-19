@@ -13,7 +13,7 @@ public class User {
         this.myCards =list;
         this.count=8;
         this.block=0;
-        for(int i=0;i<10;i++){
+        for(int i=0;i<3;i++){
             Arrays.fill(cardCounting[i],4);
         }
         Arrays.fill(blocks,false);
