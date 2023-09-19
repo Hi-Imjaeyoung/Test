@@ -17,25 +17,30 @@ public class User {
             Arrays.fill(cardCounting[i],4);
         }
         Arrays.fill(blocks,false);
+        sortCards();
     }
 
     //Essential Function
     public void addCard(Card...cards){
        for(Card nowcard : cards){
            myCards.add(nowcard);
+           updateCardCounting(nowcard);
        }
+        sortCards();
     }
-    public void deleteTheCard(){
-
+    public void abandonCard(int index){
+        myCards.remove(index);
+        sortCards();
     }
     public void printUserHand(){
 
     }
-    public void UpdateCardCounting(){
-
+    public void updateCardCounting(Card card){
+        int idCode = card.idCode;
+        cardCounting[idCode/10][idCode%10] --;
     }
     public void sortCards(){
-
+        Collections.sort(myCards);
     }
     public void calculateShentan(){
 
