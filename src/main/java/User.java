@@ -4,7 +4,7 @@ public class User {
     //variable
     List<Card> myCards;
     int count, block;
-    int[][] cardCounting = new int[3][10];
+    int[][] cardCounting = new int[4][10];
     //TODO Don't use hardcoding!
     boolean[] isBlock = new boolean[14];
 
@@ -36,8 +36,7 @@ public class User {
 
     }
     public void updateCardCounting(Card card){
-        int idCode = card.idCode;
-        cardCounting[idCode/10][idCode%10] --;
+        cardCounting[getIdcodeType(card)][getIdcodeNumber(card)] --;
     }
     public void sortCards(){
         Collections.sort(myCards);
@@ -111,5 +110,39 @@ public class User {
                 isBlock[i]=isBlock[i+1]=true;
             }
         }
+    }
+    public Card findUnnecessaryCard(){
+        int maxAdjacent = 12;
+        int targetIndex = -1;
+        for(int i=0;i<myCards.size();i++){
+            if(!isBlock[i]){
+                int adjacent =0;
+                int type =getIdcodeType(myCards.get(i));
+                int number = getIdcodeNumber(myCards.get(i));
+                adjacent+=cardCounting[type][number];
+                if(number>1 && number <9){
+                    adjacent+=cardCounting[type][number+1];
+                    adjacent+=cardCounting[type][number-1];
+                }
+                if(number==1){
+                    adjacent+=cardCounting[type][number+1];
+                }
+                if(number==9){
+                    adjacent+=cardCounting[type][number-1];
+                }
+                if(adjacent<maxAdjacent){
+                    maxAdjacent = adjacent;
+                    targetIndex = i;
+                }
+            }
+        }
+        return myCards.get(targetIndex);
+    }
+
+    private int getIdcodeType(Card card){
+        return card.idCode/10;
+    }
+    private int getIdcodeNumber(Card card){
+        return card.idCode%10;
     }
 }
